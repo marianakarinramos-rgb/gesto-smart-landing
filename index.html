@@ -26,12 +26,15 @@
         }
     </script>
     <style>
-        /* Efecto glow personalizado para hover */
         .glow-hover:hover {
             text-shadow: 0 0 10px rgba(255, 157, 138, 0.8);
         }
         .card-glow:hover {
             box-shadow: 0 0 20px rgba(255, 157, 138, 0.15);
+        }
+        /* Ocultar scrollbar cuando el modal está abierto */
+        body.modal-open {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -40,7 +43,6 @@
     <!-- Navegación Sticky -->
     <nav class="fixed top-0 w-full bg-brand-bg/95 backdrop-blur-sm z-50 border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo -->
             <a href="#inicio" class="flex items-center gap-3 group">
                 <div class="w-8 h-8 bg-brand-accent rounded flex items-center justify-center text-brand-bg font-bold text-lg group-hover:scale-105 transition-transform">
                     G
@@ -48,7 +50,6 @@
                 <span class="font-semibold text-xl tracking-tight">Gesto Smart</span>
             </a>
             
-            <!-- Enlaces -->
             <div class="hidden md:flex gap-8 text-sm font-medium text-white/80">
                 <a href="#inicio" class="hover:text-brand-accent glow-hover transition-all duration-300">Inicio</a>
                 <a href="#soluciones" class="hover:text-brand-accent glow-hover transition-all duration-300">Soluciones</a>
@@ -72,7 +73,7 @@
                     Gesto Smart ofrece aplicaciones web simples, de pago único y sin comisiones para pequeñas empresas, PyMEs y emprendedores. Gestioná tus ventas, catálogos e historial de clientes con total autonomía.
                 </p>
             </div>
-            <!-- Mockups visuales simulados -->
+            
             <div class="relative h-[500px] w-full flex justify-center lg:justify-end">
                 <div class="absolute right-0 top-0 w-64 h-[450px] bg-[#fdf2f8] rounded-3xl p-4 shadow-2xl transform rotate-3 border-4 border-gray-800">
                     <div class="w-full h-12 flex justify-between items-center border-b border-gray-200 pb-2">
@@ -110,48 +111,62 @@
         </div>
     </div>
 
-    <!-- Sección: Soluciones -->
+    <!-- Sección: Soluciones con Modal Triggers -->
     <section id="soluciones" class="py-24 px-6 max-w-7xl mx-auto text-center">
         <h4 class="text-brand-accent text-sm font-bold tracking-widest uppercase mb-4">Nuestras Aplicaciones</h4>
         <h2 class="text-4xl font-bold mb-6">Herramientas diseñadas para potenciar tu negocio</h2>
         <p class="text-white/70 max-w-2xl mx-auto mb-16">Aplicaciones enfocadas en la utilidad práctica, optimizadas para resolver operativamente la gestión diaria según tu rubro.</p>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-            <!-- Rubro: Retail & Zapatos -->
-            <div class="bg-brand-card rounded-2xl p-6 border border-white/5 transition-all duration-300 card-glow hover:-translate-y-1 cursor-pointer group">
-                <div class="w-full aspect-square bg-gray-100 rounded-xl mb-6 overflow-hidden border border-gray-200">
-                    <img src="catalogo-zapatos.png" alt="Catálogo de Zapatos" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            
+            <!-- Rubro: Gestión Retail -->
+            <div onclick="openModal('retail')" class="bg-brand-card rounded-2xl p-6 border border-white/5 transition-all duration-300 card-glow hover:-translate-y-1 cursor-pointer group relative">
+                <div class="w-full aspect-square bg-[#0a0f16] rounded-xl mb-6 overflow-hidden border border-gray-700 relative">
+                    <img src="retail.png" alt="Sistema de Gestión Retail" class="w-full h-full object-cover object-left-top group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-brand-bg/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full border border-white/20">🔍 Ver Funcionamiento</span>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold mb-2 text-white group-hover:text-brand-accent transition-colors">Retail & Calzado</h3>
-                <p class="text-sm text-white/60">Control de stock por variantes (talles/colores), lectura de código de barras y caja diaria centralizada.</p>
+                <h3 class="text-xl font-bold mb-2 text-white group-hover:text-brand-accent transition-colors">Gestión Retail</h3>
+                <p class="text-sm text-white/60">Programa integral de gestión de ventas. Control de stock, punto de venta, presupuestos, base de clientes y caja diaria centralizada.</p>
             </div>
 
             <!-- Rubro: Gastronomía -->
-            <div class="bg-brand-card rounded-2xl p-6 border border-white/5 transition-all duration-300 card-glow hover:-translate-y-1 cursor-pointer group">
-                <div class="w-full aspect-square bg-gray-100 rounded-xl mb-6 overflow-hidden border border-gray-200">
-                    <img src="catalogo-comidas.png" alt="Menú Gastronomía" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            <div onclick="openModal('comidas')" class="bg-brand-card rounded-2xl p-6 border border-white/5 transition-all duration-300 card-glow hover:-translate-y-1 cursor-pointer group relative">
+                <div class="w-full aspect-square bg-gray-100 rounded-xl mb-6 overflow-hidden border border-gray-200 relative">
+                    <img src="catalogo-comidas.png" alt="Menú Gastronomía" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-brand-bg/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full border border-white/20">🔍 Ver Funcionamiento</span>
+                    </div>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-white group-hover:text-brand-accent transition-colors">Gastronomía</h3>
-                <p class="text-sm text-white/60">Comandas ágiles, control de mesas, catálogo digital y gestión de pedidos para mostrador o delivery.</p>
+                <p class="text-sm text-white/60">Ideal para PyMEs que hacen delivery o retiro por el local. La gente ve el menú y hace el pedido que te llega directo al WhatsApp con dirección, teléfono y detalle.</p>
             </div>
 
             <!-- Rubro: Joyería -->
-            <div class="bg-brand-card rounded-2xl p-6 border border-white/5 transition-all duration-300 card-glow hover:-translate-y-1 cursor-pointer group">
-                <div class="w-full aspect-square bg-[#fff0f4] rounded-xl mb-6 overflow-hidden border border-pink-100">
-                    <img src="catalogo-joyeria.png" alt="Catálogo de Joyería" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+            <div onclick="openModal('joyeria')" class="bg-brand-card rounded-2xl p-6 border border-white/5 transition-all duration-300 card-glow hover:-translate-y-1 cursor-pointer group relative">
+                <div class="w-full aspect-square bg-[#fff0f4] rounded-xl mb-6 overflow-hidden border border-pink-100 relative">
+                    <img src="catalogo-joyeria.png" alt="Catálogo de Joyería" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-brand-bg/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full border border-white/20">🔍 Ver Funcionamiento</span>
+                    </div>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-white group-hover:text-brand-accent transition-colors">Joyería & Accesorios</h3>
-                <p class="text-sm text-white/60">Catálogo de alta resolución, gestión de artículos únicos, lista de precios mayorista y minorista.</p>
+                <p class="text-sm text-white/60">Catálogo online de alta resolución, gestión de artículos únicos, y listas de precios segmentadas para mayorista y minorista.</p>
             </div>
 
             <!-- Rubro: Estética -->
-            <div class="bg-brand-card rounded-2xl p-6 border border-white/5 transition-all duration-300 card-glow hover:-translate-y-1 cursor-pointer group">
-                <div class="w-full aspect-square bg-white rounded-xl mb-6 overflow-hidden border border-gray-200">
-                    <img src="salon-generico.png" alt="Dashboard de Salón" class="w-full h-full object-cover object-left-top group-hover:scale-105 transition-transform duration-500">
+            <div onclick="openModal('estetica')" class="bg-brand-card rounded-2xl p-6 border border-white/5 transition-all duration-300 card-glow hover:-translate-y-1 cursor-pointer group relative">
+                <div class="w-full aspect-square bg-white rounded-xl mb-6 overflow-hidden border border-gray-200 relative">
+                    <img src="salon-generico.png" alt="Dashboard de Salón" class="w-full h-full object-cover object-left-top group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-brand-bg/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold bg-black/50 px-4 py-2 rounded-full border border-white/20">🔍 Ver Funcionamiento</span>
+                    </div>
                 </div>
                 <h3 class="text-xl font-bold mb-2 text-white group-hover:text-brand-accent transition-colors">Estética & Servicios</h3>
-                <p class="text-sm text-white/60">Fichero clínico inteligente, agenda de turnos, historial por cliente y control de insumos fraccionados.</p>
+                <p class="text-sm text-white/60">Sistema de gestión con fichero clínico inteligente, agenda interactiva de turnos, historial por cliente y control de insumos.</p>
             </div>
+
         </div>
     </section>
 
@@ -199,7 +214,6 @@
                 </ul>
             </div>
             
-            <!-- Simulador de Manual de Usuario UI -->
             <div class="bg-[#111] rounded-xl border border-gray-800 shadow-2xl p-2 flex h-[500px]">
                 <div class="w-1/3 border-r border-gray-800 p-4 space-y-4">
                     <div class="h-4 w-24 bg-gray-800 rounded"></div>
@@ -232,7 +246,7 @@
         </div>
     </section>
 
-    <!-- Footer CTA -->
+    <!-- Footer -->
     <footer class="bg-black/30 border-t border-white/5 pt-20 pb-10 px-6 mt-12 text-center">
         <h4 class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-4">Evolucioná tu gestión</h4>
         <h2 class="text-3xl font-bold mb-4">Agilidad real para tu negocio<br>sin ataduras contractuales</h2>
@@ -254,5 +268,118 @@
         </div>
     </footer>
 
+    <!-- MODAL LIGHTBOX (Oculto por defecto) -->
+    <div id="galleryModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/95 backdrop-blur-sm transition-opacity duration-300">
+        
+        <!-- Botón Cerrar -->
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white hover:text-brand-accent transition-colors z-[110]">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <!-- Botón Anterior -->
+        <button onclick="prevImage()" class="absolute left-4 md:left-12 text-white/50 hover:text-white transition-colors z-[110]">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+
+        <!-- Contenedor Principal de Imagen y Texto -->
+        <div class="relative max-w-5xl w-full mx-4 flex flex-col items-center">
+            
+            <!-- Etiqueta superior dinámica -->
+            <div id="modalLabel" class="bg-brand-accent text-brand-bg font-bold px-6 py-2 rounded-full mb-4 text-sm tracking-wide">
+                Vista de Catálogo
+            </div>
+
+            <!-- Imagen -->
+            <img id="modalImage" src="" alt="Vista previa de la interfaz" class="max-h-[75vh] w-auto object-contain rounded-lg shadow-2xl border border-white/10 transition-all duration-300">
+            
+            <!-- Indicadores de posición -->
+            <div class="flex gap-2 mt-6" id="modalDots">
+                <!-- Los puntos se generan con JS -->
+            </div>
+        </div>
+
+        <!-- Botón Siguiente -->
+        <button onclick="nextImage()" class="absolute right-4 md:right-12 text-white/50 hover:text-white transition-colors z-[110]">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+
+    </div>
+
+    <!-- SCRIPT DE GALERÍA -->
+    <script>
+        // Configuración de las galerías para cada rubro
+        const galleries = {
+            'retail': [
+                { src: 'retail.png', label: '1. Panel Central y Stock' },
+                { src: 'punto-venta-retail.png', label: '2. Punto de Venta Operativo' },
+                { src: 'caja-diaria.png', label: '3. Control de Caja y Remitos' }
+            ],
+            'comidas': [
+                { src: 'catalogo-comidas.png', label: '1. Tu Menú Digital' },
+                { src: 'backend-comidas.png', label: '2. Gestión de Mesas y Precios' },
+                { src: 'carrito-comidas.png', label: '3. Pedido por WhatsApp' }
+            ],
+            'joyeria': [
+                { src: 'catalogo-joyeria.png', label: '1. Vitrina de Joyería' },
+                { src: 'backend-joyeria.png', label: '2. Control de Inventario Fino' },
+                { src: 'carrito-joyeria.png', label: '3. Resumen para Mayoristas' }
+            ],
+            'estetica': [
+                { src: 'salon-generico.png', label: '1. Panel Principal del Salón' },
+                { src: 'backend-estetica.png', label: '2. Ficha de Clientes' },
+                { src: 'agenda-estetica.png', label: '3. Agenda de Turnos' }
+            ]
+        };
+
+        let currentCategory = '';
+        let currentIndex = 0;
+
+        function openModal(category) {
+            currentCategory = category;
+            currentIndex = 0;
+            updateModalContent();
+            
+            document.getElementById('galleryModal').classList.remove('hidden');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() {
+            document.getElementById('galleryModal').classList.add('hidden');
+            document.body.classList.remove('modal-open');
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % galleries[currentCategory].length;
+            updateModalContent();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + galleries[currentCategory].length) % galleries[currentCategory].length;
+            updateModalContent();
+        }
+
+        function updateModalContent() {
+            const currentItem = galleries[currentCategory][currentIndex];
+            
+            const imgElement = document.getElementById('modalImage');
+            imgElement.src = currentItem.src;
+            document.getElementById('modalLabel').innerText = currentItem.label;
+
+            const dotsContainer = document.getElementById('modalDots');
+            dotsContainer.innerHTML = '';
+            
+            galleries[currentCategory].forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `w-2 h-2 rounded-full transition-colors ${index === currentIndex ? 'bg-brand-accent scale-125' : 'bg-white/30'}`;
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight' && !document.getElementById('galleryModal').classList.contains('hidden')) nextImage();
+            if (e.key === 'ArrowLeft' && !document.getElementById('galleryModal').classList.contains('hidden')) prevImage();
+        });
+    </script>
 </body>
 </html>
